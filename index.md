@@ -1,6 +1,7 @@
 # Krishnized
 
-* [Vrajendra QA](https://krishnized.com/vrajendra-qa/)
-* [Mangala Arati](https://krishnized.com/arati/mangala)
+* [Fonts with Cyrillic Combinations for Sanskrit](/fonts)
+* [Vrajendra QA](/vrajendra-qa)
+* [Mangala Arati](/arati/mangala)
 
 <p align="center"><a href="https://github.com/krishnized">ॐ</a></p>
