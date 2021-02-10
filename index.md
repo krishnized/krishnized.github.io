@@ -1,6 +1,6 @@
 # Krishnized
 
-* [Fonts with Cyrillic Combinations for Sanskrit](https://krishnized.com/fonts)
+* [Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
 * [Vrajendra QA](https://krishnized.com/vrajendra-qa)
 * [Mangala Arati](https://krishnized.com/arati/mangala)
 
