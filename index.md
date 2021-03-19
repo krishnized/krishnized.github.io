@@ -1,6 +1,6 @@
 # Krishnized
 
-* [Karatals/Mridang tutorials by Laghu-Sangitamrita book](https://www.youtube.com/channel/UChzbl35hvk_pRDAxudxkrZA/featured)
+* [Karatals/Mridang tutorials by Laghu-Sangitamrita](https://www.youtube.com/channel/UChzbl35hvk_pRDAxudxkrZA/featured)
 * [Laghu Sangitamrita PDF](https://github.com/krishnized/laghu-sangitamrita/raw/master/Pavana_1.pdf)
 * [Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
 * [Vrajendra QA](https://krishnized.com/vrajendra-qa)
