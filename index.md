@@ -4,5 +4,6 @@
 * [Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
 * [Vrajendra QA](https://krishnized.com/vrajendra-qa)
 * [Mangala Arati](https://krishnized.com/arati/mangala)
+* [Krishnized License](https://krishnized.github.io/license/)
 
 <p align="center"><a href="https://github.com/krishnized">ॐ</a></p>
