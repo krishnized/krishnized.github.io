@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" :data-theme="isLight? 'light':'dark'">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>SB 10.9</title>
+    <style>
+      [\:each],
+      [\:hidden] {
+        visibility: hidden
+      }
+
+      @keyframes slideRight {
+        0% {
+          transform: translateX(1rem);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateX(0rem);
+          opacity: 1;
+        }
+
+        0% {
+          transform: translateX(1rem);
+          opacity: 0;
+        }
+      }
+
+
+      section {
+        padding: calc(var(--pico-spacing)*2);
+        margin-bottom: 0;
+        width: 100%;
+      }
+
+      section>* {
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+        animation-name: slideRight;
+      }
+
+      section>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      section img {
+        min-height: 100vh;
+      }
+
+      nav ul li a {
+        color: var(--pico-contrast);
+        background: transparent;
+
+      }
+
+      a[role="button"].outline.contrast {
+        border: 0;
+      }
+
+      nav ul li a[aria-current="true"] {
+        color: var(--pico-muted-border-color);
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <main class="container"
+          style="height:100dvh; padding:0; max-width: none; background: black;"
+          :with="{slide: 0}"
+          :fx="setInterval(() => (slide = ++slide%slides.length), 5000)">
+      <div
+           style="display: flex;align-items: center;justify-content: center; height: 100%;">
+
+        <div style="position: absolute; left: 0">
+          <a href="#" role="button" class="contrast outline"
+             :onclick.prevent="e => (slide == 0 ? slide = slides.length - 1 : slide = slide - 1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                 viewBox="0 0 24 24">
+              <path
+                    d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z">
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <section aria-label="slider"
+                 style="padding:0; height:100%; display: flex; align-items: center; justify-content: center;">
+          <div :if="slide === 0">
+            <img src="./Yasoda-0.jpeg">
+          </div>
+          <div :if="slide === 1">
+            <img src="./Yasoda-1.jpeg">
+          </div>
+          <div :if="slide === 2">
+            <img src="./Yasoda-2.jpeg">
+          </div>
+          <div :if="slide === 3">
+            <img src="./Yasoda-3.jpeg">
+          </div>
+          <div :if="slide === 4">
+            <img src="./Yasoda-4.jpeg">
+          </div>
+          <div :if="slide === 5">
+            <img src="./Yasoda-5.jpeg">
+          </div>
+          <div :if="slide === 6">
+            <img src="./Yasoda-6.jpeg">
+          </div>
+          <div :if="slide === 7">
+            <img src="./Yasoda-7.jpeg">
+          </div>
+          <div :if="slide === 8">
+            <img src="./Yasoda-8.jpeg">
+          </div>
+          <div :if="slide === 9">
+            <img src="./Yasoda-9.jpeg">
+          </div>
+          <div :if="slide === 10">
+            <img src="./Yasoda-10.jpeg">
+          </div>
+          <div :if="slide === 11">
+            <img src="./Yasoda-11.jpeg">
+          </div>
+          <div :if="slide === 12">
+            <img src="./Yasoda-12.jpeg">
+          </div>
+          <div :if="slide === 13">
+            <img src="./Yasoda-13.jpeg">
+          </div>
+          <div :if="slide === 14">
+            <img src="./Yasoda-14.jpeg">
+          </div>
+          <div :if="slide === 15">
+            <img src="./Yasoda-15.jpeg">
+          </div>
+          <div :if="slide === 16">
+            <img src="./Yasoda-16.jpeg">
+          </div>
+          <div :if="slide === 17">
+            <img src="./Yasoda-17.jpeg">
+          </div>
+          <div :if="slide === 18">
+            <img src="./Yasoda-18.jpeg">
+          </div>
+          <div :if="slide === 19">
+            <img src="./Yasoda-19.jpeg">
+          </div>
+          <div :if="slide === 20">
+            <img src="./Yasoda-20.jpeg">
+          </div>
+          <div :if="slide === 21">
+            <img src="./Yasoda-21.jpeg">
+          </div>
+          <div :if="slide === 22">
+            <img src="./Yasoda-22.jpeg">
+          </div>
+          <div :if="slide === 23">
+            <img src="./Yasoda-23.jpeg">
+          </div>
+          <div :if="slide === 24">
+            <img src="./Yasoda-24.jpeg">
+          </div>
+          <div :if="slide === 25">
+            <img src="./Yasoda-25.jpeg">
+          </div>
+          <div :if="slide === 26">
+            <img src="./Yasoda-26.jpeg">
+          </div>
+          <div :if="slide === 27">
+            <img src="./Yasoda-27.jpeg">
+          </div>
+        </section>
+
+        <div style="position: absolute; right: 0">
+          <a href="#" role="button" class="contrast outline"
+             :onclick.prevent="e => (slide == slides.length - 1? slide = 0 : slide = slide + 1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                 viewBox="0 0 24 24">
+              <path
+                    d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z">
+              </path>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <nav>
+        <ul></ul>
+
+        <ul>
+          <li :each="item,index in slides">
+            <a href="#" :onclick.prevent="e => (slide = index)"
+               :aria-current="slide == index? 'true':'false'">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                   viewBox="0 0 24 24">
+                <path
+                      d="M17 2H7C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5z">
+                </path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <ul></ul>
+      </nav>
+    </main>
+
+    <script type="module">
+
+      //import sprae from './sprae.min.js';
+      import sprae from 'https://cdn.jsdelivr.net/npm/sprae@10.6.1/dist/sprae.js';
+      const app = sprae(document.documentElement, {
+        isLight: true,
+        slides: [...document.querySelectorAll('section[aria-label="slider"] > div')]
+      });
+
+    </script>
+
+  </body>
+
+</html>
