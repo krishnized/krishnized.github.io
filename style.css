@@ -1,8 +1,7 @@
 body {
   margin: auto auto;
-  background: cornsilk;
-  display: flex;
-  --black: #24292e;
+  background: floralwhite;
+  --black: darkslategray;
   color: var(--black);
 
   &::before {
@@ -21,9 +20,8 @@ body {
   main {
     position: relative;
 
-
     a {
-      color: slateblue;
+      color: cornflowerblue;
       text-decoration-color: rgb(from currentColor r g b / 20%);
       text-underline-offset: .2em;
       text-decoration-line: underline;
@@ -63,9 +61,9 @@ body {
       padding: 0;
       list-style-position: inside;
 
-      /* li::marker {
-					content: "· ";
-				} */
+      li::marker {
+					content: "– ";
+				}
     }
 
 
