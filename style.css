@@ -62,7 +62,7 @@ body {
       list-style-position: inside;
 
       li::marker {
-					content: "– ";
+					content: "− ";
 				}
     }
 
