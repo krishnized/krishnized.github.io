@@ -13,3 +13,7 @@
 * [Krishnized License](https://krishnized.github.io/license/)
 
 <p align="center"><a href="https://github.com/krishnized">ॐ</a></p>
+
+
+<script src="//unpkg.com/sprae" start prefix="js-"></script>
+<div js-scope="x=0, y=0" js-onmousemove.document="e => { x = e.clientX; y = e.clientY; }" js-style.root="{'--x': x + 'px', '--y': y + 'px'}"></div>
