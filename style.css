@@ -1,7 +1,7 @@
 body {
   margin: auto auto;
   background: floralwhite;
-  --black: darkslategray;
+  --black: #566e88;
   color: var(--black);
 
   &::before {
