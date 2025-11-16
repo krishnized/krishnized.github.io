@@ -5,7 +5,7 @@
 <!-- * Gaudiobooks -->
 * [Gaudiobooks](https://www.youtube.com/@gaudiobooksru) <!-- en subtitles, en dubbing, poster, website. -->
 * [Govindas Montreal](https://govindasmontreal.ca) <!-- en subtitles, en dubbing, poster, website. -->
-* [One more change: The story of Ajamil](https://ajamil.film) <!-- en subtitles, en dubbing, poster, website. -->
+* [The story of Ajamil](https://ajamil.film) <!-- en subtitles, en dubbing, poster, website. -->
 <!-- * Fixed mridangas -->
 <!-- * ISKCON Montreal temple security cameras -->
 <!-- * [Mayapur Mridanga tutorials](https://krishnized.com/mridanga/mayapur-mridang) -->
