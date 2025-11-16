@@ -1,0 +1,77 @@
+body {
+  margin: auto auto;
+  background: cornsilk;
+  display: flex;
+  --black: #24292e;
+  color: var(--black);
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--x, 50%) 0, white, transparent 54%);
+    transition: background-position 0.05s;
+  }
+
+  .markdown-body,
+  main {
+    position: relative;
+
+
+    a {
+      color: slateblue;
+      text-decoration-color: rgb(from currentColor r g b / 20%);
+      text-underline-offset: .2em;
+      text-decoration-line: underline;
+
+      &.anchorjs-link {
+        text-decoration: none;
+      }
+    }
+
+    a:hover {
+      text-decoration-color: currentColor;
+      color: var(--black);
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      .github {
+        margin-left: auto;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    article {
+      figure {
+        margin: 0
+      }
+    }
+
+    ul {
+      padding: 0;
+      list-style-position: inside;
+
+      /* li::marker {
+					content: "· ";
+				} */
+    }
+
+
+    /* hide github h1 */
+    h1:first-of-type {
+      display: none;
+    }
+  }
+}
