@@ -16,15 +16,15 @@
 * [Mangala Arati](https://krishnized.com/arati/mangala)
 * [Krishnized License](https://krishnized.github.io/license/)
 
-<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
 
 <stripe-buy-button
-  buy-button-id="buy_btn_1SWRcaJytHL2WVukwlzO6ikZ"
-  publishable-key="pk_test_51SWRYcJytHL2WVuk7F83z2TuxdH3jXch4Rbg3J0gMFE2n3GWfcAKDmkubGTo0aQ9WwvLJUTccUBB4UgmyeAvgLZT00BS0GHroV"
+  buy-button-id="buy_btn_1SWS0wFTHrOCVoeKz3WKNOqk"
+  publishable-key="pk_live_51SWRYKFTHrOCVoeK5Vw6p9tucvIQbhexzKfnKDeG1rTESBSHp2dJI0RuXv4k3II2eq4JSjvuqoqJowRZe24Dps6n00ZKNmpPcE"
 >
 </stripe-buy-button>
-
-<p align="center"><a href="https://github.com/krishnized">ॐ</a></p>
 
 
 <script src="//unpkg.com/sprae" start prefix="js-"></script>
