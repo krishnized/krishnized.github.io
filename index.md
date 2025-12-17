@@ -7,6 +7,7 @@
 * [Govindas Montreal](https://govindasmontreal.ca) <!-- en subtitles, en dubbing, poster, website. -->
 * [The story of Ajamil](https://ajamil.film) <!-- en subtitles, en dubbing, poster, website. -->
 <!-- * Fixed mridangas -->
+<!-- * ISKCON Montreal gazebo -->
 <!-- * ISKCON Montreal temple security cameras -->
 <!-- * [Mayapur Mridanga tutorials](https://krishnized.com/mridanga/mayapur-mridang) -->
 * [Laghu-Sangitamrita tutorials](https://www.youtube.com/channel/UChzbl35hvk_pRDAxudxkrZA/featured)
@@ -14,7 +15,7 @@
 * [Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
 * [Vrajendra Kumar Questions](https://krishnized.com/vrajendra-qa)
 * [Mangala Arati](https://krishnized.com/arati/mangala)
-* [Krishnized License](https://krishnized.github.io/license/)
+* [Krishnized License](https://krishnized.com/license/)
 
 <script async
   src="https://js.stripe.com/v3/buy-button.js">
