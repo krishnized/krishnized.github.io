@@ -3,9 +3,9 @@
 # kṛṣṇzd
 
 <!-- * Gaudiobooks -->
-* [Grihastha Ashram](https://krishnized.com/ray-of-vishnu/book/grihastha-ashram) <!-- en subtitles, en dubbing, poster, website. -->
-* [Gaudiobooks](https://www.youtube.com/@gaudiobooksru) <!-- en subtitles, en dubbing, poster, website. -->
-* [Govindas Montreal](https://govindasmontreal.ca) <!-- en subtitles, en dubbing, poster, website. -->
+* [Grihastha Ashram](https://krishnized.com/ray-of-vishnu/book/grihastha-ashram)
+* [Gaudiobooks](https://www.youtube.com/@gaudiobooksru)
+<!-- * [Govindas Montreal](https://govindasmontreal.ca) -->
 * [The story of Ajamil](https://ajamil.film) <!-- en subtitles, en dubbing, poster, website. -->
 <!-- * Fixed mridangas -->
 <!-- * ISKCON Montreal gazebo -->
