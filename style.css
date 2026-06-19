@@ -230,3 +230,13 @@ body {
   .verse__item { transition: none; }
   .offerings dt a, .offerings dd { transition: none; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Shared with the other krishnized.com pages (license, arati, books, …).
+   They render through a GitHub Pages theme (Primer → `.markdown-body`) but link
+   this same central stylesheet, so a rule here reaches all of them at once.
+   Hide the theme's redundant first heading (the repo name shown as a title).
+   Scoped to `.markdown-body` only — never `main` — so the home wordmark stays.
+   ───────────────────────────────────────────────────────────────────────── */
+.markdown-body h1:first-of-type { display: none; }
+
