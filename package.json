@@ -1,0 +1,10 @@
+{
+  "name": "krishnized.github.io",
+  "version": "1.0.0",
+  "description": "krishnized.com — creative offerings to Kṛṣṇa",
+  "private": true,
+  "scripts": {
+    "dev": "jekyll serve --livereload --open-url",
+    "build": "jekyll build"
+  }
+}

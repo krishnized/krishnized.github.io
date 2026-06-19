@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>kṛṣṇized — creative offerings to Kṛṣṇa</title>
+<meta name="description" content="kṛṣṇized, v. — to make a thing an offering to Kṛṣṇa. Film, books, audiobooks, music, aratis and fonts, offered in His service." />
+<meta name="theme-color" content="#fbfaf6" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23fbfaf6'/%3E%3Ccircle%20cx='16'%20cy='20'%20r='7'%20fill='%23cf8a3c'/%3E%3Cg%20stroke='%23cf8a3c'%20stroke-width='1.4'%20stroke-linecap='round'%3E%3Cline%20x1='16'%20y1='5'%20x2='16'%20y2='9'/%3E%3Cline%20x1='4.5'%20y1='9'%20x2='7'%20y2='11.5'/%3E%3Cline%20x1='27.5'%20y1='9'%20x2='25'%20y2='11.5'/%3E%3C/g%3E%3Cline%20x1='3'%20y1='24'%20x2='29'%20y2='24'%20stroke='%23566e88'%20stroke-width='1.4'%20stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Noto Sans: a clean neo-grotesque with COMPLETE IAST coverage (ṛ ṣ ṇ ḥ ā ṅ ś …).
+     Neue Montreal is preferred where installed; diacritics fall through to Noto Sans. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="firstlight" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="page">
+    <header class="mast reveal">
+      <h1 class="wordmark">kṛṣṇized</h1>
+      <p class="gloss">
+        <span class="pron">/ˈkrɪʃ.naɪzd/</span>
+        <span class="pos">v.</span>
+        <span class="rule" aria-hidden="true"></span>
+      </p>
+
+      <!-- Kṛṣṇa's words on work offered to Him. Add/edit verses here; the first shows
+           first, then they rotate slowly (paused on hover/focus and for reduced motion). -->
+      <div class="verse" role="group" aria-roledescription="rotating verse" aria-label="Verse from the Bhagavad-gītā">
+        <p class="verse__item is-active">
+          <span class="sa" lang="sa-Latn">yat karoṣi … tat kuruṣva mad-arpaṇam</span> —
+          whatever you do, do that as an offering to Me.
+          <cite>Bhagavad-gītā 9.27</cite>
+        </p>
+        <p class="verse__item" aria-hidden="true">
+          <span class="sa" lang="sa-Latn">mad-artham api karmāṇi kurvan siddhim avāpsyasi</span> —
+          work for My sake, and you will attain perfection.
+          <cite>Bhagavad-gītā 12.10</cite>
+        </p>
+        <p class="verse__item" aria-hidden="true">
+          <span class="sa" lang="sa-Latn">sva-karmaṇā tam abhyarcya siddhiṁ vindati</span> —
+          worshipping Him through your own work, you reach perfection.
+          <cite>Bhagavad-gītā 18.46</cite>
+        </p>
+        <p class="verse__item" aria-hidden="true">
+          <span class="sa" lang="sa-Latn">patraṁ puṣpaṁ phalaṁ toyaṁ … bhaktyā … aśnāmi</span> —
+          a leaf, a flower, fruit or water — offered with love, I accept.
+          <cite>Bhagavad-gītā 9.26</cite>
+        </p>
+        <p class="verse__item" aria-hidden="true">
+          <span class="sa" lang="sa-Latn">mat-karma-kṛn mat-paramo … sa mām eti</span> —
+          one who works for Me, devoted to Me, comes to Me.
+          <cite>Bhagavad-gītā 11.55</cite>
+        </p>
+      </div>
+    </header>
+
+    <nav class="offerings" aria-label="Offerings">
+      {{ content }}
+    </nav>
+
+    <footer class="foot reveal">
+      <section class="support">
+        <h2>Support this service</h2>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1SWS0wFTHrOCVoeKz3WKNOqk"
+          publishable-key="pk_live_51SWRYKFTHrOCVoeK5Vw6p9tucvIQbhexzKfnKDeG1rTESBSHp2dJI0RuXv4k3II2eq4JSjvuqoqJowRZe24Dps6n00ZKNmpPcE">
+        </stripe-buy-button>
+      </section>
+    </footer>
+  </main>
+
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <script>
+    // First light follows the cursor along the horizon — rAF-throttled.
+    (() => {
+      const root = document.documentElement;
+      let x = null, queued = false;
+      const apply = () => { queued = false; root.style.setProperty('--x', x + '%'); };
+      addEventListener('pointermove', (e) => {
+        x = (e.clientX / innerWidth) * 100;
+        if (!queued) { queued = true; requestAnimationFrame(apply); }
+      }, { passive: true });
+    })();
+
+    // The verse rotates slowly — paused while reading, when the tab is hidden,
+    // and entirely for visitors who prefer reduced motion.
+    (() => {
+      const wrap = document.querySelector('.verse');
+      const items = wrap ? [...wrap.querySelectorAll('.verse__item')] : [];
+      if (items.length < 2) return;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      let i = 0, timer = null;
+      const advance = () => {
+        items[i].classList.remove('is-active');
+        items[i].setAttribute('aria-hidden', 'true');
+        i = (i + 1) % items.length;
+        items[i].classList.add('is-active');
+        items[i].removeAttribute('aria-hidden');
+      };
+      const start = () => { if (!reduce.matches && !timer) timer = setInterval(advance, 7000); };
+      const stop  = () => { if (timer) { clearInterval(timer); timer = null; } };
+      start();
+      wrap.addEventListener('pointerenter', stop);
+      wrap.addEventListener('pointerleave', start);
+      wrap.addEventListener('focusin', stop);
+      wrap.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+      reduce.addEventListener?.('change', () => reduce.matches ? stop() : start());
+    })();
+  </script>
+</body>
+</html>

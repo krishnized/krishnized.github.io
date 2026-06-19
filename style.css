@@ -1,75 +1,232 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   kṛṣṇized — sacred dawn
+   Content: index.md · Shell: _layouts/default.html
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --paper:      #fbfaf6;  /* soft off-white, barely warm */
+  --ink-strong: #34465c;  /* titles, headings */
+  --ink:        #4f667f;  /* body */
+  --ink-deep:   #28333f;  /* hover text */
+  --muted:      #5f6f88;  /* tags, phonetics */
+  --hair: color-mix(in oklab, var(--ink) 14%, transparent);
+
+  --font: "Neue Montreal", "PP Neue Montreal", "Noto Sans",
+          ui-sans-serif, system-ui, sans-serif;
+
+  /* fluid tokens — phone → desktop */
+  --bleed: clamp(1.25rem, 5vw, 7rem);
+  --measure: 60rem;
+  --rowpad: clamp(0.8rem, 0.55rem + 1vw, 1.3rem);
+  --colpad: clamp(1rem, 3vw, 2rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
 body {
-  margin: auto auto;
-  background: floralwhite;
-  --black: #566e88;
-  color: var(--black);
+  margin: 0;
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.18rem);
+  line-height: 1.55;
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at var(--x, 50%) 0, white, transparent 54%);
-    transition: background-position 0.05s;
+/* ── The dawn: stationary sky + cursor-tracked first light ─────────────── */
+.sky, .firstlight, .grain {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+}
+.sky {
+  /* a single soft, near-neutral light pooling at the top horizon */
+  background: radial-gradient(120% 66% at 50% -16%,
+    oklch(1 0.004 90 / 0.8), transparent 70%);
+}
+.firstlight {
+  background: radial-gradient(48% 40% at var(--x, 50%) -8%,
+    oklch(1 0.003 90 / 0.5), transparent 60%);
+  opacity: 0;
+  animation: bloom 1900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+/* fine paper grain to keep gradients from banding */
+.grain {
+  opacity: 0.035; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: clamp(2.5rem, 9vh, 8rem) var(--bleed) clamp(2.5rem, 8vh, 5rem);
+  display: flex; flex-direction: column;
+  gap: clamp(2.75rem, 7vh, 6.5rem);
+}
+
+/* ── Masthead: a dictionary entry for the verb "kṛṣṇized" ──────────────── */
+.mast { max-width: 44rem; }
+
+.wordmark {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(2.75rem, 2.5rem + 6.8vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--ink-strong);
+  overflow-wrap: break-word;
+}
+
+.gloss {
+  margin: clamp(1rem, 3vh, 1.7rem) 0 0;
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.5rem 0.9rem;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+}
+.gloss .pron { letter-spacing: 0.01em; }
+.gloss .pos  { font-style: italic; }
+.gloss .rule {
+  flex: 1 1 2rem; height: 1px; min-width: 2rem;
+  background: var(--hair);
+  transform: translateY(-0.25em);
+}
+
+/* the verse, beneath the label — a slow rotator of Kṛṣṇa's words on work offered */
+.verse { margin: clamp(1.4rem, 4vh, 2.2rem) 0 0; display: grid; }
+.verse__item {
+  grid-area: 1 / 1;          /* stack all in one cell → height of the tallest, no jump */
+  align-self: start;
+  margin: 0;
+  max-width: 42ch;
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--ink);
+  text-wrap: pretty;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+.verse__item.is-active { opacity: 1; }
+.verse__item .sa { font-style: italic; color: var(--ink-strong); }
+.verse__item cite {
+  display: block; margin-top: 0.45rem;
+  font-style: normal; font-size: 0.82em; color: var(--muted);
+}
+
+/* ── The offerings: an illuminated index (from a markdown definition list) ─ */
+.offerings dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;   /* no column-gap → the row rule stays continuous */
+  border-bottom: 1px solid var(--hair);
+}
+
+.offerings dt,
+.offerings dd {
+  border-top: 1px solid var(--hair);
+  padding: var(--rowpad) 0;
+}
+
+.offerings dt {
+  grid-column: 1;
+  padding-right: var(--colpad);      /* clearance to the credit; rule still spans it */
+  font-size: clamp(1.35rem, 1.2rem + 1.5vw, 2.1rem);
+  font-weight: 450;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--ink-strong);
+}
+.offerings dt a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+  transition: color 220ms ease, text-decoration-color 220ms ease;
+}
+
+.offerings dd {
+  grid-column: 2;
+  margin: 0;
+  /* stretch (default) so the top border lines up with dt's; centre the text with flex */
+  display: flex; align-items: center; justify-content: flex-end;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 220ms ease;
+}
+
+/* hover/focus: the underline appears and the text quietly darkens — no colour */
+@media (hover: hover) {
+  .offerings dt:hover a { color: var(--ink-deep); text-decoration-color: currentColor; }
+  .offerings dt:hover + dd { color: var(--ink); }
+}
+.offerings dt:focus-within a { color: var(--ink-deep); text-decoration-color: currentColor; }
+.offerings dt:focus-within + dd { color: var(--ink); }
+
+/* ── Footer: support / dakṣiṇā ────────────────────────────────────────── */
+.foot { display: flex; flex-direction: column; gap: clamp(1.75rem, 5vh, 3rem); }
+
+.support { display: flex; flex-direction: column; gap: 0.9rem; }
+.support h2 {
+  margin: 0;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+.support stripe-buy-button { align-self: start; }
+
+:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 4px; border-radius: 2px; }
+
+/* ── Narrow screens: credits drop beneath their title ─────────────────── */
+@media (max-width: 34rem) {
+  .offerings dl { grid-template-columns: 1fr; }
+  .offerings dt { padding-right: 0; padding-bottom: 0.25rem; }
+  .offerings dd {
+    grid-column: 1;
+    border-top: 0;
+    padding-top: 0;
+    justify-content: flex-start;
+    white-space: normal;
   }
+}
 
-  .markdown-body,
-  main {
-    position: relative;
+/* ── Orchestrated dawn-break reveal ───────────────────────────────────── */
+@keyframes rise  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes bloom { to { opacity: 1; } }
 
-    a {
-      color: cornflowerblue;
-      text-decoration-color: rgb(from currentColor r g b / 20%);
-      text-underline-offset: .2em;
-      text-decoration-line: underline;
+.reveal { opacity: 0; animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mast { animation-delay: 200ms; }
+.foot { animation-delay: 1.12s; }
 
-      &.anchorjs-link {
-        text-decoration: none;
-      }
-    }
+/* stagger each offering row (dt + its dd share a delay) */
+.offerings dt, .offerings dd { opacity: 0; animation: rise 800ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.offerings dt:nth-of-type(1),  .offerings dd:nth-of-type(1)  { animation-delay: 0.46s; }
+.offerings dt:nth-of-type(2),  .offerings dd:nth-of-type(2)  { animation-delay: 0.52s; }
+.offerings dt:nth-of-type(3),  .offerings dd:nth-of-type(3)  { animation-delay: 0.58s; }
+.offerings dt:nth-of-type(4),  .offerings dd:nth-of-type(4)  { animation-delay: 0.64s; }
+.offerings dt:nth-of-type(5),  .offerings dd:nth-of-type(5)  { animation-delay: 0.70s; }
+.offerings dt:nth-of-type(6),  .offerings dd:nth-of-type(6)  { animation-delay: 0.76s; }
+.offerings dt:nth-of-type(7),  .offerings dd:nth-of-type(7)  { animation-delay: 0.82s; }
+.offerings dt:nth-of-type(8),  .offerings dd:nth-of-type(8)  { animation-delay: 0.88s; }
+.offerings dt:nth-of-type(9),  .offerings dd:nth-of-type(9)  { animation-delay: 0.94s; }
+.offerings dt:nth-of-type(10), .offerings dd:nth-of-type(10) { animation-delay: 1.00s; }
+.offerings dt:nth-of-type(11), .offerings dd:nth-of-type(11) { animation-delay: 1.06s; }
+.offerings dt:nth-of-type(12), .offerings dd:nth-of-type(12) { animation-delay: 1.12s; }
 
-    a:hover {
-      text-decoration-color: currentColor;
-      color: var(--black);
-    }
-
-    header {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 2rem;
-
-      .github {
-        margin-left: auto;
-        color: inherit;
-        text-decoration: none;
-      }
-    }
-
-    article {
-      figure {
-        margin: 0
-      }
-    }
-
-    ul {
-      padding: 0;
-      list-style-position: inside;
-
-      li::marker {
-					content: "− ";
-				}
-    }
-
-
-    /* hide github h1 */
-    h1:first-of-type {
-      display: none;
-    }
-  }
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .offerings dt, .offerings dd { opacity: 1; animation: none; }
+  .firstlight { opacity: 1; animation: none; }
+  .verse__item { transition: none; }
+  .offerings dt a, .offerings dd { transition: none; }
 }

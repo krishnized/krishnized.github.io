@@ -1,33 +1,33 @@
-<link rel="stylesheet" href="./style.css"/>
+---
+layout: default
+---
 
-# kṛṣṇzd
+<!-- The offerings. Each one is a link line + a ": " line for the service rendered,
+     with a blank line between them. Order here = order on the page. -->
 
-<!-- * Gaudiobooks -->
-* [Grihastha Ashram](https://krishnized.com/ray-of-vishnu/book/grihastha-ashram)
-* [Gaudiobooks](https://www.youtube.com/@gaudiobooksru)
-<!-- * [Govindas Montreal](https://govindasmontreal.ca) -->
-* [The story of Ajamil](https://ajamil.film) <!-- en subtitles, en dubbing, poster, website. -->
-<!-- * Fixed mridangas -->
-<!-- * ISKCON Montreal gazebo -->
-<!-- * ISKCON Montreal temple security cameras -->
-<!-- * [Mayapur Mridanga tutorials](https://krishnized.com/mridanga/mayapur-mridang) -->
-* [Laghu-Sangitamrita tutorials](https://www.youtube.com/channel/UChzbl35hvk_pRDAxudxkrZA/featured)
-* [Laghu Sangitamrita PDF](https://github.com/krishnized/laghu-sangitamrita/raw/master/Pavana_1.pdf)
-* [Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
-* [Vrajendra Kumar Questions](https://krishnized.com/vrajendra-qa)
-* [Mangala Arati](https://krishnized.com/arati/mangala)
-* [Krishnized License](https://krishnized.com/license/)
+[The Story of Ajāmila](https://ajamil.film)
+: Dubbing · Design · Site
 
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
+[Gṛhastha Āśrama](https://krishnized.com/ray-of-vishnu/book/grihastha-ashram)
+: Translation · Site
 
-<stripe-buy-button
-  buy-button-id="buy_btn_1SWS0wFTHrOCVoeKz3WKNOqk"
-  publishable-key="pk_live_51SWRYKFTHrOCVoeK5Vw6p9tucvIQbhexzKfnKDeG1rTESBSHp2dJI0RuXv4k3II2eq4JSjvuqoqJowRZe24Dps6n00ZKNmpPcE"
->
-</stripe-buy-button>
+[Gaudiobooks](https://www.youtube.com/@gaudiobooksru)
+: Production
 
+[Laghu-saṅgītāmṛta](https://www.youtube.com/channel/UChzbl35hvk_pRDAxudxkrZA/featured)
+: Editing · Subtitles
 
-<script src="//unpkg.com/sprae" start prefix="js-"></script>
-<div js-scope="x=0, y=0" js-onmousemove.document="e => { x = e.clientX; y = e.clientY; }" js-style.root="{'--x': x + 'px', '--y': y + 'px'}"></div>
+[Laghu-saṅgītāmṛta — Pavana](https://github.com/krishnized/laghu-sangitamrita/raw/master/Pavana_1.pdf)
+: Score · PDF
+
+[Maṅgala Ārati](https://krishnized.com/arati/mangala)
+: Site
+
+[Vrajendra-kumāra Questions](https://krishnized.com/vrajendra-qa)
+: Compilation · Site
+
+[Fonts with Cyrillic Diacritics](https://krishnized.com/fonts)
+: Type design
+
+[Kṛṣṇized License](https://krishnized.com/license/)
+: License

@@ -1,0 +1,17 @@
+# krishnized.com
+# Content lives in index.md. Design lives in _layouts/default.html + style.css.
+title: kṛṣṇized
+description: creative offerings to Kṛṣṇa
+
+# Keep these out of the built site (they are not pages).
+exclude:
+  - README.md
+  - research.md
+  - todo.md
+  - package.json
+  - package-lock.json
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - .impeccable.md
+  - vendor
