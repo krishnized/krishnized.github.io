@@ -3,93 +3,92 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>kṛṣṇized — creative offerings to Kṛṣṇa</title>
-<meta name="description" content="kṛṣṇized, v. — to make a thing an offering to Kṛṣṇa. Film, books, audiobooks, music, aratis and fonts, offered in His service." />
-<meta name="theme-color" content="#fbfaf6" />
+<title>kṛṣṇized — creative offerings to Kṛṣṇa · творческие подношения Кришне</title>
+<meta name="description" content="kṛṣṇized, v. — to make a thing an offering to Kṛṣṇa. Film, books, audiobooks, music lessons, aratis, questions and fonts, offered in His service. Фильм, книги, аудиокниги, уроки музыки, арати, вопросы и шрифты: подношения Кришне." />
+<meta name="theme-color" content="#080a18" />
+<meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%2315120e'/%3E%3Ctext%20x='16'%20y='17'%20font-size='23'%20text-anchor='middle'%20dominant-baseline='central'%20fill='%23fbfaf6'%3E%E0%A5%90%3C/text%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- Noto Sans: a clean neo-grotesque with COMPLETE IAST coverage (ṛ ṣ ṇ ḥ ā ṅ ś …).
-     Neue Montreal is preferred where installed; diacritics fall through to Noto Sans. -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css" />
+<!-- Ysabeau Office: the English voice. Cormorant: the Russian voice and the wordmark
+     (not Cormorant Garamond: it draws Д Л as Greek Δ Λ). Both carry every IAST glyph and Cyrillic. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Ysabeau+Office:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+{%- assign stamp = site.time | date: "%s" %}
+<link rel="stylesheet" href="/home.css?v={{ stamp }}" />
 </head>
 
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="firstlight" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <!-- lamplight duotone for the pictures: night-indigo shadows, ghee-amber mids, dim cream highlights.
+       Highlights are capped so text over the brightest spot keeps 4.5:1 at the opacity in home.css. -->
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="lamp" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.082 0.26 0.46 0.60" />
+        <feFuncG type="table" tableValues="0.090 0.16 0.32 0.50" />
+        <feFuncB type="table" tableValues="0.155 0.14 0.19 0.38" />
+      </feComponentTransfer>
+    </filter>
+  </svg>
 
-  <main class="page">
-    <header class="mast reveal">
+  <div class="page">
+    <header class="mast">
       <h1 class="wordmark">kṛṣṇized</h1>
-      <p class="gloss">
-        <span class="pron">/ˈkrɪʃ.naɪzd/</span>
-        <span class="pos">v.</span>
-        <span class="rule" aria-hidden="true"></span>
-      </p>
+      <p class="gloss">/ˈkrɪʃ.naɪzd/ <span class="pos">v. <span lang="ru">гл.</span></span></p>
 
-      <!-- Kṛṣṇa's words on work offered to Him. Add/edit verses here; the first shows
-           first, then they rotate slowly (paused on hover/focus and for reduced motion). -->
+
       <div class="verse" role="group" aria-roledescription="rotating verse" aria-label="Verse from the Bhagavad-gītā">
-        <p class="verse__item is-active">
-          <span class="sa" lang="sa-Latn">yat karoṣi … tat kuruṣva mad-arpaṇam</span> —
-          whatever you do, do that as an offering to Me.
-          <cite>Bhagavad-gītā 9.27</cite>
-        </p>
-        <p class="verse__item" aria-hidden="true">
-          <span class="sa" lang="sa-Latn">mad-artham api karmāṇi kurvan siddhim avāpsyasi</span> —
-          work for My sake, and you will attain perfection.
-          <cite>Bhagavad-gītā 12.10</cite>
-        </p>
-        <p class="verse__item" aria-hidden="true">
-          <span class="sa" lang="sa-Latn">sva-karmaṇā tam abhyarcya siddhiṁ vindati</span> —
-          worshipping Him through your own work, you reach perfection.
-          <cite>Bhagavad-gītā 18.46</cite>
-        </p>
-        <p class="verse__item" aria-hidden="true">
-          <span class="sa" lang="sa-Latn">patraṁ puṣpaṁ phalaṁ toyaṁ … bhaktyā … aśnāmi</span> —
-          a leaf, a flower, fruit or water — offered with love, I accept.
-          <cite>Bhagavad-gītā 9.26</cite>
-        </p>
-        <p class="verse__item" aria-hidden="true">
-          <span class="sa" lang="sa-Latn">mat-karma-kṛn mat-paramo … sa mām eti</span> —
-          one who works for Me, devoted to Me, comes to Me.
-          <cite>Bhagavad-gītā 11.55</cite>
-        </p>
+        {%- for v in site.data.verses %}
+        <div class="verse__item{% if forloop.first %} is-active{% endif %}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+          {%- if v.sa %}<p class="sa" lang="sa-Latn">{{ v.sa }}</p>{% endif %}
+          <p class="en">{{ v.en }}</p>
+          <p class="ru" lang="ru">{{ v.ru }}</p>
+          {%- if v.cite %}
+          <p class="label"><a href="{{ v.url }}"><cite>{{ v.cite[0] }}</cite></a><cite lang="ru">{{ v.cite[1] }}</cite></p>
+          {%- else %}
+          <p class="label"><cite>Bhagavad-gītā {{ v.ref }}</cite><cite lang="ru">Бхагавад-гита {{ v.ref }}</cite></p>
+          {%- endif %}
+        </div>
+        {%- endfor %}
       </div>
     </header>
 
     <nav class="offerings" aria-label="Offerings">
-      {{ content }}
+      <ol>
+        {%- for o in site.data.offerings %}
+        <li>
+          <a href="{{ o.url }}">
+            <span class="n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <span>
+              <span class="title"><span class="en">{{ o.title[0] }}</span> <span lang="ru">{{ o.title[1] }}</span></span>
+              <span class="role">{{ o.role[0] }} <span lang="ru">{{ o.role[1] }}</span></span>
+            </span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          {%- if o.img %}
+          <img src="{{ o.img }}?v={{ stamp }}" alt="" loading="lazy" decoding="async" />
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ol>
     </nav>
 
-    <footer class="foot reveal">
+    <footer class="foot">
       <section class="support">
-        <h2>Support this service</h2>
-        <stripe-buy-button
-          buy-button-id="buy_btn_1SWS0wFTHrOCVoeKz3WKNOqk"
-          publishable-key="pk_live_51SWRYKFTHrOCVoeK5Vw6p9tucvIQbhexzKfnKDeG1rTESBSHp2dJI0RuXv4k3II2eq4JSjvuqoqJowRZe24Dps6n00ZKNmpPcE">
-        </stripe-buy-button>
+        <h2 class="label">Support this service <span lang="ru">Поддержать служение</span></h2>
+        <a class="give" href="https://donate.stripe.com/14A8wPep77Hh8BS3Gb9bO01">Contribute / Dakṣiṇā</a>
+      </section>
+      <section class="credit">
+        <h2 class="label">Made by <span lang="ru">Сделал</span></h2>
+        <a href="https://dy.github.io"><span class="en">Dhīra Kānta dāsa (dy)</span> <span lang="ru">Дхира Канта дас</span></a>
       </section>
     </footer>
-  </main>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <script>
-    // First light follows the cursor along the horizon — rAF-throttled.
-    (() => {
-      const root = document.documentElement;
-      let x = null, queued = false;
-      const apply = () => { queued = false; root.style.setProperty('--x', x + '%'); };
-      addEventListener('pointermove', (e) => {
-        x = (e.clientX / innerWidth) * 100;
-        if (!queued) { queued = true; requestAnimationFrame(apply); }
-      }, { passive: true });
-    })();
-
-    // The verse rotates slowly — paused while reading, when the tab is hidden,
+    // The verse rotates slowly: paused while reading, when the tab is hidden,
     // and entirely for visitors who prefer reduced motion.
     (() => {
       const wrap = document.querySelector('.verse');

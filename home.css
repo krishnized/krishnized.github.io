@@ -1,0 +1,202 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   kṛṣṇized — home: the night before maṅgala-ārati
+   Content: _data/offerings.yml, _data/verses.yml · Shell: _layouts/default.html
+   The page is painted from night (top) to first light (footer). Hovering or
+   focusing an offering brings its picture up behind the whole page.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --night:  oklch(0.15 0.032 276);        /* indigo-black ground */
+  --ink:    oklch(0.95 0.018 84);         /* lamplit cream: English */
+  --muted:  oklch(0.80 0.022 285);        /* moonlit silver: Russian */
+  --amber:  oklch(0.82 0.12 72);          /* ghee lamp: the accent */
+  --kumkum: oklch(0.52 0.17 30);          /* dakṣiṇā button */
+  --hair:   oklch(0.82 0.12 72 / 0.24);   /* amber-tinted rules */
+
+  --sans:  "Ysabeau Office", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --serif: "Cormorant", "Noto Serif", Georgia, serif;
+
+  --bleed: clamp(1.25rem, 4.5vw, 4.5rem);
+  --top:   clamp(1.5rem, 7vh, 6.5rem);
+  --ease:  cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--night); color-scheme: dark; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  font-variant-numeric: lining-nums;    /* Cormorant defaults to old-style figures */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* night, then dawn: scrolling down is time passing */
+  background:
+    radial-gradient(115% 30rem at 50% 100%, oklch(0.66 0.14 62 / 0.55), oklch(0.5 0.13 35 / 0.18) 55%, transparent 100%),
+    linear-gradient(in oklab 180deg,
+      var(--night) 0%,
+      var(--night) 46%,
+      oklch(0.165 0.042 279) 62%,
+      oklch(0.19 0.056 290) 75%,
+      oklch(0.225 0.068 312) 86%,
+      oklch(0.27 0.08 340) 94%,
+      oklch(0.34 0.1 15) 100%);
+}
+
+[lang="ru"] { font-family: var(--serif); color: var(--muted); }
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+
+::selection { background: var(--amber); color: var(--night); }
+
+/* fine grain: dithers the long gradient and the pictures into one surface */
+.grain {
+  position: fixed; inset: 0; z-index: 2;
+  pointer-events: none;
+  opacity: 0.07; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* bilingual label: letter-spaced caps, English in the sans, Russian in the serif */
+.label {
+  margin: 0;
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  column-gap: 0.75em; row-gap: 0.3em;   /* the Russian moves whole to the next line, unindented */
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.17em; text-transform: uppercase;
+}
+.label [lang="ru"] { font-weight: 500; font-size: 1.16em; letter-spacing: 0.14em; }
+
+/* ── Page: masthead beside the list, footer beneath ────────────────────── */
+.page {
+  position: relative; z-index: 1;       /* the pictures sit just behind this layer */
+  max-width: 96rem;
+  margin-inline: auto;
+  padding: var(--top) var(--bleed) clamp(5rem, 16vh, 10rem);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(2rem, 7vw, 8rem);
+}
+
+.mast { grid-column: 1; align-self: start; position: sticky; top: var(--top); }
+
+.wordmark {
+  margin: 0;
+  font: 300 clamp(3.6rem, min(1.4rem + 6.4vw, 15vh), 8rem)/0.82 var(--serif);   /* shorter screens: smaller, so the pinned column fits */
+  letter-spacing: -0.025em;
+  padding-bottom: 0.12em;               /* the dots under ṛ ṣ ṇ */
+}
+
+.gloss { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.95rem; }
+.gloss .pos { margin-left: 0.6em; font-style: italic; }
+.gloss .pos [lang="ru"] { margin-left: 0.3em; font-size: 1.15em; }
+
+/* one verse at a time; all share one cell, so the block never jumps */
+.verse { margin: clamp(1.25rem, 5vh, 3.5rem) 0 0; display: grid; max-width: 30rem; }
+.verse__item {
+  grid-area: 1 / 1;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+.verse__item.is-active { opacity: 1; }
+.verse__item p { margin: 0; text-wrap: pretty; }
+.verse .sa { font-style: italic; color: var(--amber); letter-spacing: 0.01em; }
+.verse .en { margin-top: 0.5rem; font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.35rem); line-height: 1.32; text-wrap: balance; }
+.verse .ru { margin-top: 0.3rem; font-style: italic; font-weight: 500; font-size: clamp(1.25rem, 1.12rem + 0.4vw, 1.5rem); line-height: 1.24; }
+.verse .label { margin-top: 1rem; }
+.verse .label a { transition: color 300ms var(--ease); }
+.verse .label a:is(:hover, :focus-visible) { color: var(--amber); }
+
+/* ── The offerings: a numbered list ────────────────────────────────────── */
+.offerings { grid-column: 2; }
+.offerings ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hair); }
+.offerings li { border-bottom: 1px solid var(--hair); }
+
+.offerings a {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  padding: clamp(1.1rem, 2.6vh, 1.65rem) 0;
+}
+.n { color: var(--amber); font-size: 0.8rem; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+
+.title {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(1.45rem, 1.1rem + 1vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.title .en { display: inline-block; transition: color 300ms var(--ease); }
+.title [lang="ru"] { display: inline-block; font-style: italic; font-size: 1.1em; letter-spacing: 0; transition: color 300ms var(--ease); }
+
+.role { display: block; margin-top: 0.45rem; font-size: 0.95rem; line-height: 1.35; }
+.role [lang="ru"] { display: inline-block; margin-left: 0.35em; font-style: italic; font-weight: 500; font-size: 1.14em; }
+
+.arrow { color: var(--amber); font-size: 1.35rem; line-height: 1; transition: transform 300ms var(--ease); }
+
+/* the picture: full-bleed behind the page, lamplit, shown while its offering is pointed at */
+.offerings img {
+  position: fixed; inset: 0; z-index: -1;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;             /* portraits keep faces and titles, which sit high */
+  opacity: 0;
+  filter: url(#lamp);
+  pointer-events: none;
+  transition: opacity 700ms var(--ease);
+}
+.offerings a:is(:hover, :focus-visible) + img { opacity: 0.48; }
+
+.offerings a:is(:hover, :focus-visible) .title :is(.en, [lang="ru"]) { color: var(--amber); }
+.offerings a:hover .arrow { transform: translate(0.2rem, -0.2rem); }
+.offerings a:focus-visible { outline-offset: 3px; }
+
+/* ── Footer: dakṣiṇā, and who made it ──────────────────────────────────── */
+.foot {
+  grid-column: 1 / -1;
+  margin-top: clamp(4.5rem, 14vh, 9rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--hair);
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
+  gap: 3rem;
+}
+.foot section { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
+.give {
+  padding: 0.8rem 1.5rem;
+  background: var(--kumkum);
+  border-radius: 3px;
+  font-weight: 600; letter-spacing: 0.02em;
+  transition: background-color 300ms var(--ease);
+}
+.give:hover { background: oklch(0.58 0.19 32); }
+
+.credit a { font-size: 1.15rem; line-height: 1.3; }
+.credit a, .credit a [lang="ru"] { transition: color 300ms var(--ease); }
+.credit a [lang="ru"] { display: block; font-style: italic; font-weight: 500; font-size: 1.16em; }
+.credit a:is(:hover, :focus-visible), .credit a:is(:hover, :focus-visible) [lang="ru"] { color: var(--amber); }
+
+/* ── Narrow screens: one column; no hover, so no pictures ──────────────── */
+@media (max-width: 56rem) {
+  .page { grid-template-columns: minmax(0, 1fr); }
+  .mast { position: static; margin-bottom: clamp(3rem, 9vh, 4.5rem); }
+  .offerings { grid-column: 1; }
+  .offerings a { grid-template-columns: 2rem minmax(0, 1fr) auto; }
+  .offerings img { display: none; }     /* lazy + not rendered: never downloaded */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .verse__item, .title .en, .title [lang="ru"], .arrow, .offerings img, .give, .credit a, .credit a [lang="ru"], .verse .label a { transition: none; }
+}

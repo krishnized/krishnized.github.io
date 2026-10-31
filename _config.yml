@@ -1,5 +1,6 @@
 # krishnized.com
-# Content lives in index.md. Design lives in _layouts/default.html + style.css.
+# Content lives in _data/offerings.yml and _data/verses.yml. Design lives in _layouts/default.html + home.css;
+# style.css is the shared base other krishnized.com pages link.
 title: kṛṣṇized
 description: creative offerings to Kṛṣṇa
 

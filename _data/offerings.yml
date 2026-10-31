@@ -1,0 +1,52 @@
+# The offerings, in page order. Pairs are [English, Russian].
+#   title  – name of the work
+#   role   – what was offered (service rendered)
+#   img    – optional picture of the work, shown behind the page on hover (files in /img)
+
+- title: [The Story of Ajāmila, История Аджамилы]
+  role: [Dubbing · Design · Site, Дубляж · Дизайн · Сайт]
+  url: https://ajamil.film
+  img: /img/ajamila.webp     # the film's poster
+
+- title: [Gṛhastha Āśrama, Грихастха-ашрам]
+  role: [Translation · Site, Перевод · Сайт]
+  url: https://krishnized.com/ray-of-vishnu/book/grihastha-ashram
+  img: /img/grihastha.webp   # the book's cover
+
+- title: [Gaudiobooks, Вайшнавские аудиокниги]
+  role: [Production, Производство]
+  url: https://www.youtube.com/@gaudiobooksru
+  img: /img/gaudiobooks.webp # the channel's Śrīla Prabhupāda cover with its logo
+
+- title: ["Laghu-saṅgītāmṛta, Pavana dāsa", "Лагху-сангитамрита, Павана дас"]
+  role: [Book · PDF, Книга · PDF]
+  url: https://github.com/krishnized/laghu-sangitamrita/raw/master/Pavana_1.pdf
+
+- title: [Mṛdaṅga Lessons, Уроки игры на мриданге]
+  role: [Editing · Subtitles, Монтаж · Субтитры]
+  url: https://www.youtube.com/playlist?list=PL8RaezjRm2mWWJN7IK-QVEU9ufvXQVUjg
+  img: /img/mridanga.webp
+
+- title: [Karatāla Lessons, Уроки игры на караталах]
+  role: [Editing · Subtitles, Монтаж · Субтитры]
+  url: https://www.youtube.com/playlist?list=PL8RaezjRm2mWySR6ts5aDKxoDCsUfCVqz
+  img: /img/karatala.webp
+
+- title: [Maṅgala Ārati, Мангала Арати]
+  role: [Site, Сайт]
+  url: https://krishnized.com/arati/mangala
+  img: /img/mangala-arati.webp
+
+- title: [Questions & Answers, Вопросы и ответы]
+  role: [Compilation · Site, Составление · Сайт]
+  url: https://krishnized.com/questions/
+  img: /img/questions.webp   # Śukadeva answers Parīkṣit, © BBT International
+
+- title: [Fonts with Cyrillic Diacritics, Шрифты с кириллической диакритикой]
+  role: [Type design, Шрифтовой дизайн]
+  url: https://krishnized.com/fonts
+  img: /img/fonts.webp       # a matrix of Cyrillic diacritics set in the fonts themselves
+
+- title: [Kṛṣṇized License, Лицензия Kṛṣṇized]
+  role: [License, Лицензия]
+  url: https://krishnized.com/license/
