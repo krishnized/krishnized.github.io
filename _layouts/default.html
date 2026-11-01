@@ -38,7 +38,7 @@
       <p class="gloss">/ˈkrɪʃ.naɪzd/ <span class="pos">v. <span lang="ru">гл.</span></span></p>
 
 
-      <div class="verse" role="group" aria-roledescription="rotating verse" aria-label="Verse from the Bhagavad-gītā">
+      <div class="verse" role="group" tabindex="0" aria-roledescription="rotating quote" aria-label="Quote; click or press Enter for the next">
         {%- for v in site.data.verses %}
         <div class="verse__item{% if forloop.first %} is-active{% endif %}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
           {%- if v.sa %}<p class="sa" lang="sa-Latn">{{ v.sa }}</p>{% endif %}
@@ -88,23 +88,37 @@
   <div class="grain" aria-hidden="true"></div>
 
   <script>
-    // The verse rotates slowly: paused while reading, when the tab is hidden,
-    // and entirely for visitors who prefer reduced motion.
+    // Quotes: a random one on load, the next on click (Enter, Space), and a slow turn on their own,
+    // paused while pointed at or focused, when the tab is hidden, and for reduced motion.
     (() => {
       const wrap = document.querySelector('.verse');
       const items = wrap ? [...wrap.querySelectorAll('.verse__item')] : [];
       if (items.length < 2) return;
       const reduce = matchMedia('(prefers-reduced-motion: reduce)');
       let i = 0, timer = null;
-      const advance = () => {
+      const show = n => {
         items[i].classList.remove('is-active');
         items[i].setAttribute('aria-hidden', 'true');
-        i = (i + 1) % items.length;
+        i = n % items.length;
         items[i].classList.add('is-active');
         items[i].removeAttribute('aria-hidden');
       };
+      const advance = () => show(i + 1);
       const start = () => { if (!reduce.matches && !timer) timer = setInterval(advance, 7000); };
       const stop  = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+      // the first quote appears at once, without fading in over the server-rendered one
+      wrap.classList.add('is-instant');
+      show(Math.floor(Math.random() * items.length));
+      wrap.offsetWidth;
+      wrap.classList.remove('is-instant');
+
+      const next = () => { show(i + 1); stop(); if (!wrap.matches(':hover, :focus-within')) start(); };
+      wrap.addEventListener('click', e => { if (!e.target.closest('a')) next(); });
+      wrap.addEventListener('keydown', e => {
+        if (e.target !== wrap || (e.key !== 'Enter' && e.key !== ' ')) return;
+        e.preventDefault(); next();
+      });
       start();
       wrap.addEventListener('pointerenter', stop);
       wrap.addEventListener('pointerleave', start);
